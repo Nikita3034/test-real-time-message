@@ -13,16 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/twits', function () {
-    $twits = DB::table('twits')->get();
-    return view('twits.twits', compact('twits'));
-});
-
-Route::get('/twit/{twit}', function ($id) {
-    $twit = DB::table('twits')->find($id);
-    return view('twits.twit', compact('twit'));
-});
+Route::get('/', 'HomeController@home');
