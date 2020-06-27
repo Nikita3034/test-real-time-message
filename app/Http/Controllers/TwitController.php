@@ -14,11 +14,15 @@ class TwitController extends Controller
         ]);
     }
 
-    public function addTwit() {
+    public function addTwit(Request $request) {
 
-        $return = Twit::insert();
+        Twit::create([
+            'CategoryId' => $request->input('category'),
+            'Username' => $request->input('name'),
+            'Content' => $request->input('text'),
+        ]);
 
-        return $return;
+        return redirect()->back();
     }
 
     public function getTwits() {

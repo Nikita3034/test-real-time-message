@@ -17,6 +17,6 @@ Route::get('/', 'HomeController@getHomePage')->name('home');
 
 Route::get('/twits', 'TwitController@getTwitsPage')->name('twits');
 
-Route::post('/twits/add-twit', 'TwitController@addTwit')->name('add-twit-form');
+Route::post('/twits/addTwit', 'TwitController@addTwit')->name('addTwit');
 
 Route::get('/twits/get-twits-json', 'TwitController@getTwitsJson');
