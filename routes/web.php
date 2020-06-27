@@ -13,4 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@home');
+Route::get('/', 'HomeController@getHomePage')->name('home');
+
+Route::get('/twits', 'TwitController@getTwitsPage')->name('twits');
+
+Route::post('/twits/add-twit', 'TwitController@addTwit')->name('add-twit-form');
+
+Route::get('/twits/get-twits-json', 'TwitController@getTwitsJson');

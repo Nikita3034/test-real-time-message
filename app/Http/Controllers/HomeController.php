@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Twit;
 
 class HomeController extends Controller
 {
-    public function home() {
+    public function getHomePage() {
 
-        $twits = Twit::all();
-
-        return view('home/home', compact('twits'));
+        return view('home/index');
     }
 }
