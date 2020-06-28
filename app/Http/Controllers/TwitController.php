@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Twit;
+use App\Events\AddTwitEvent;
 
 class TwitController extends Controller
 {
@@ -16,13 +17,13 @@ class TwitController extends Controller
 
     public function addTwit(Request $request) {
 
-        Twit::create([
+        $twit = Twit::create([
             'CategoryId' => $request->input('category'),
             'Username' => $request->input('name'),
             'Content' => $request->input('text'),
         ]);
 
-        return redirect()->back();
+        return $twit;
     }
 
     public function getTwits() {
@@ -35,5 +36,18 @@ class TwitController extends Controller
     public function getTwitsJson() {
 
         return json_encode($this->getTwits());
+    }
+
+    public function eventAddTwit(Request $request) {
+
+        $this->addTwit($request);
+
+        $twits = $this->getTwits();
+
+        event(
+            new AddTwitEvent($twits)
+        );
+
+        return $twits;
     }
 }
