@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@getHomePage')->name('home');
+// Route::get('/', 'HomeController@getHomePage')->name('home');
 
-Route::get('/twits', 'TwitController@getTwitsPage')->name('twits');
+Route::get('/', 'TwitController@getTwitsPage')->name('twits');
 
 Route::get('/twits/event-add-twit', 'TwitController@eventAddTwit');
 
